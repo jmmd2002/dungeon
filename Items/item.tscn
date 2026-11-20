@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://copu7raa2wowx"]
+
+[ext_resource type="Script" uid="uid://bimuqhcsha8xw" path="res://Items/item.gd" id="1_bkywi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rs1r3"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7x0ad"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bkywi"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 0
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 0
+properties/2/path = NodePath(".:is_held")
+properties/2/spawn = true
+properties/2/replication_mode = 0
+properties/3/path = NodePath(".:visible")
+properties/3/spawn = true
+properties/3/replication_mode = 0
+
+[node name="Item" type="StaticBody3D" unique_id=960589478]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_bkywi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=519728954]
+shape = SubResource("BoxShape3D_rs1r3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=492834884]
+mesh = SubResource("BoxMesh_7x0ad")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=793794723]
+replication_config = SubResource("SceneReplicationConfig_bkywi")

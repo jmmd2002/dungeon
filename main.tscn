@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d4j56o3juuuol"]
+
+[ext_resource type="Script" uid="uid://byd26xm0dq7mr" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://wplpkftftrxr" path="res://Player/players.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://fvtskhs82a53" path="res://Items/items.gd" id="3_items"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x0ad"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rs1r3"]
+size = Vector3(20, 1, 20)
+
+[node name="Main" type="Node3D" unique_id=378929588]
+script = ExtResource("1_0xm2m")
+
+[node name="Items" type="Node3D" parent="." unique_id=1203948571 groups=["items"]]
+script = ExtResource("3_items")
+
+[node name="Players" parent="." unique_id=1039375022 instance=ExtResource("1_ig7tw")]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1425152952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1931476036]
+shape = SubResource("BoxShape3D_7x0ad")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1112975778]
+mesh = SubResource("BoxMesh_rs1r3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1392559746]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=949536974]
+_spawnable_scenes = PackedStringArray("uid://cuct533q6aev4")
+spawn_path = NodePath("../Players")
+
+[node name="ItemSpawner" type="MultiplayerSpawner" parent="." unique_id=1328304369]
+_spawnable_scenes = PackedStringArray("uid://copu7raa2wowx")
+spawn_path = NodePath("../Items")

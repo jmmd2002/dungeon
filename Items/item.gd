@@ -65,3 +65,11 @@ func _place_at(new_transform: Transform3D) -> void:
 
 func set_pose(new_transform: Transform3D) -> void:
 	global_transform = new_transform
+
+# Called every frame by the player whose inventory holds this item
+func follow_hand(hand: Transform3D, shown: bool) -> void:
+	if not is_held:
+		return # Being dropped: the host's landing spot wins
+	visible = shown
+	if shown:
+		set_pose(hand)

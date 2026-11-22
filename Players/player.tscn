@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cuct533q6aev4"]
 
-[ext_resource type="Script" uid="uid://xb7rnx1pwwtv" path="res://Player/player.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://xb7rnx1pwwtv" path="res://Players/player.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://dha1w01tftuqp" path="res://Players/interactor.gd" id="2_dju3o"]
+[ext_resource type="Script" uid="uid://bguop62svfwcy" path="res://Players/inventory.gd" id="2_fq5u1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7x0ad"]
 margin = 0.0
@@ -21,11 +23,14 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath("Head:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath("Inventory:selected_slot")
+properties/3/spawn = true
+properties/3/replication_mode = 2
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l8h54"]
-properties/0/path = NodePath(".:inventory")
+properties/0/path = NodePath("Inventory:slots")
 properties/0/spawn = true
-properties/0/replication_mode = 0
+properties/0/replication_mode = 2
 
 [node name="Player" type="CharacterBody3D" unique_id=300890583]
 script = ExtResource("1_l8h54")
@@ -44,9 +49,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 [node name="InteractRay" type="RayCast3D" parent="Head/View" unique_id=160309942]
 target_position = Vector3(0, 0, -2)
 collision_mask = 3
+script = ExtResource("2_dju3o")
 
 [node name="HoldPoint" type="Marker3D" parent="Head/View" unique_id=246998388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.3, -0.6)
+
+[node name="Inventory" type="Node3D" parent="." unique_id=1430958380]
+script = ExtResource("2_fq5u1")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1430635263]
 replication_config = SubResource("SceneReplicationConfig_hvfyp")

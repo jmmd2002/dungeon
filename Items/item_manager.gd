@@ -1,14 +1,23 @@
+class_name ItemManager
 extends Node3D
 
 const ITEM: PackedScene = preload(P.ITEM)
 
 var _next_id: int = 1 # items id
 
+func _enter_tree() -> void:
+	Game.items = self
+
+func _exit_tree() -> void:
+	Game.items = null
+
 func _ready() -> void:
 	NW.server_started.connect(_on_server_started)
 
 func _on_server_started() -> void:
-	spawn_item(Vector3(0, 0.15, 0)) # Test item until the facility spawns them
+	# Test items until the facility spawns them
+	spawn_item(Vector3(0, 0.15, 0))
+	spawn_item(Vector3(1, 0.15, 0))
 
 # Host only
 func spawn_item(spawn_position: Vector3) -> Item:

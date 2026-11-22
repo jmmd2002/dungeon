@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d4j56o3juuuol"]
 
 [ext_resource type="Script" uid="uid://byd26xm0dq7mr" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://wplpkftftrxr" path="res://Player/players.tscn" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://fvtskhs82a53" path="res://Items/items.gd" id="3_items"]
+[ext_resource type="Script" uid="uid://b5qslfd217br3" path="res://Players/player_manager.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://fvtskhs82a53" path="res://Items/item_manager.gd" id="3_items"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7x0ad"]
 size = Vector3(20, 1, 20)
@@ -13,10 +13,11 @@ size = Vector3(20, 1, 20)
 [node name="Main" type="Node3D" unique_id=378929588]
 script = ExtResource("1_0xm2m")
 
-[node name="Items" type="Node3D" parent="." unique_id=1203948571 groups=["items"]]
+[node name="Items" type="Node3D" parent="." unique_id=1203948571]
 script = ExtResource("3_items")
 
-[node name="Players" parent="." unique_id=1039375022 instance=ExtResource("1_ig7tw")]
+[node name="Players" type="Node3D" parent="." unique_id=331187695]
+script = ExtResource("3_h2yge")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1425152952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -35,5 +36,5 @@ _spawnable_scenes = PackedStringArray("uid://cuct533q6aev4")
 spawn_path = NodePath("../Players")
 
 [node name="ItemSpawner" type="MultiplayerSpawner" parent="." unique_id=1328304369]
-_spawnable_scenes = PackedStringArray("uid://copu7raa2wowx")
+_spawnable_scenes = PackedStringArray("uid://copu7raa2wowx", "uid://copu7raa2wowx")
 spawn_path = NodePath("../Items")

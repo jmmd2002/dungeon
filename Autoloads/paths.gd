@@ -1,5 +1,4 @@
 extends Node
 
-const PLAYER: String = "res://Player/player.tscn"
-const PLAYERS: String = "res://Player/players.tscn"
+const PLAYER: String = "res://Players/player.tscn"
 const ITEM: String = "res://Items/item.tscn"

@@ -3,12 +3,22 @@
 [ext_resource type="Script" uid="uid://byd26xm0dq7mr" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://wplpkftftrxr" path="res://Player/players.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://fvtskhs82a53" path="res://Items/items.gd" id="3_items"]
+[ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://Assets/textures/grids/Dark/texture_05.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dko2pc0uq6pwf" path="res://Assets/textures/grids/Green/texture_01.png" id="5_lquwl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7x0ad"]
 size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rs1r3"]
 size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_texture = ExtResource("4_1bvp3")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
+albedo_texture = ExtResource("5_lquwl")
+uv1_triplanar = true
 
 [node name="Main" type="Node3D" unique_id=378929588]
 script = ExtResource("1_0xm2m")
@@ -18,13 +28,15 @@ script = ExtResource("3_items")
 
 [node name="Players" parent="." unique_id=1039375022 instance=ExtResource("1_ig7tw")]
 
-[node name="Floor" type="StaticBody3D" parent="." unique_id=1425152952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+[node name="Ring" type="StaticBody3D" parent="." unique_id=1425152952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.323383, 0.6586437, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1931476036]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ring" unique_id=1931476036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.10318, 0, 0)
 shape = SubResource("BoxShape3D_7x0ad")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1112975778]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ring" unique_id=1112975778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91716, -0.16607046, -0.0018978119)
 mesh = SubResource("BoxMesh_rs1r3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1392559746]
@@ -37,3 +49,21 @@ spawn_path = NodePath("../Players")
 [node name="ItemSpawner" type="MultiplayerSpawner" parent="." unique_id=1328304369]
 _spawnable_scenes = PackedStringArray("uid://copu7raa2wowx")
 spawn_path = NodePath("../Items")
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=2000232000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_lquwl")
+use_collision = true
+size = Vector3(1000, 1, 1000)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=809068431]
+transform = Transform3D(0.5194493, 0, -0.85450137, 0, 1, 0, 0.85450137, 0, 0.5194493, -18.597385, 1.7246337, 6.2036247)
+material_override = SubResource("StandardMaterial3D_7mycd")
+use_collision = true
+size = Vector3(4.7993164, 2.0770264, 1.9803467)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=301283448]
+transform = Transform3D(0.5194493, 0, -0.85450137, 0, 1, 0, 0.85450137, 0, 0.5194493, -16.607605, 0.9552232, 6.2036247)
+material_override = SubResource("StandardMaterial3D_7mycd")
+use_collision = true
+size = Vector3(4.7993164, 2.0770264, 1.9803467)

@@ -12,7 +12,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.keycode == KEY_H:
 		started = NW.host() == OK
 	elif event.keycode == KEY_J:
-		started = NW.join("127.0.0.1") == OK
+		print("hello")
+		started = NW.join("192.168.1.103") == OK
 
 func _on_connection_ended(message: String) -> void:
 	print(message)

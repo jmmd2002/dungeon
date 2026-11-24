@@ -21,7 +21,8 @@ func _on_server_started() -> void:
 func add_player(id: int) -> void:
 	var player: Node3D = PLAYER.instantiate()
 	player.name = str(id)
-	player.position = Vector3(randf_range(-3, 3), 1, randf_range(-3, 3))
+	player.position = Vector3(randf_range(-3, 3), 5, randf_range(-3, 3))
+	
 	add_child(player, true) # node name = id
 
 func remove_player(id: int) -> void:

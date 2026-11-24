@@ -19,6 +19,7 @@ var selected_slot: int = 0
 @onready var view: Camera3D = $Head/View
 @onready var interact_ray: RayCast3D = $Head/View/InteractRay
 @onready var hold_point: Marker3D = $Head/View/HoldPoint
+@onready var player_hud: CanvasLayer = $PlayerHud
 
 
 #############################
@@ -36,9 +37,14 @@ func _ready() -> void:
 	view.current = is_multiplayer_authority() # set correct view
 	if is_multiplayer_authority() and get_window().has_focus():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #hide mouse
-
+		
+		
+	if not is_multiplayer_authority(): 
+		player_hud.queue_free() # We only want one crosshair per player machine
+		
 	# Interact range
 	interact_ray.target_position = Vector3(0, 0, -REACH)
+
 
 
 

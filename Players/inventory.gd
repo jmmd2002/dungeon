@@ -1,11 +1,20 @@
 class_name Inventory
 extends Node
 
+signal changed
+
 const SIZE: int = 4
 
 # Item IDs stored in inv; 0 means empty
-var slots: PackedInt32Array = PackedInt32Array()
-var selected_slot: int = 0
+# Host sets each players inventory
+var slots: PackedInt32Array = PackedInt32Array():
+	set(value):
+		slots = value
+		changed.emit()
+var selected_slot: int = 0:
+	set(value):
+		selected_slot = value
+		changed.emit()
 
 # Inventory owner
 @onready var player: Player = get_parent() as Player

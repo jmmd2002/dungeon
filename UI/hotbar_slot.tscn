@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://0u05j676fjtd"]
+
+[ext_resource type="Script" uid="uid://blnruxtwsti4k" path="res://UI/hotbar_slot.gd" id="1_yhek7"]
+
+[node name="HotbarSlot" type="PanelContainer" unique_id=174357860]
+custom_minimum_size = Vector2(80, 80)
+script = ExtResource("1_yhek7")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=398602363]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=649568151]
+layout_mode = 2
+
+[node name="Number" type="Label" parent="Margin/VBox" unique_id=1321174541]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="Margin/VBox" unique_id=997339485]
+layout_mode = 2
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

@@ -24,6 +24,10 @@ func _ready() -> void:
 	view.current = is_multiplayer_authority() # set correct view
 	if is_multiplayer_authority() and get_window().has_focus():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #hide mouse
+	
+	# Inventory hotbar
+	if is_multiplayer_authority():
+		Game.hud.hotbar.watch(inventory)
 
 
 #############################

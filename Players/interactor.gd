@@ -28,6 +28,7 @@ func _interact() -> void:
 		player.inventory.try_pickup(target)
 	
 	# Others
+	
 
 #############################3
 # Getters

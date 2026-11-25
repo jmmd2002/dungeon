@@ -5,9 +5,6 @@ const SLOT: PackedScene = preload(P.HOTBAR_SLOT)
 
 var _inventory: Inventory
 
-func _ready() -> void:
-	visible = false
-
 func watch(inventory: Inventory) -> void:
 	_inventory = inventory # load inv
 	for i: int in Inventory.SIZE:
@@ -15,8 +12,7 @@ func watch(inventory: Inventory) -> void:
 	# Repaint when inventory changes
 	inventory.changed.connect(_refresh) 
 	_refresh()
-	visible = true
-	
+
 func _refresh() -> void:
 	for slot: int in Inventory.SIZE:
 		var item: Item = Game.items.get_item(_inventory.slots[slot])

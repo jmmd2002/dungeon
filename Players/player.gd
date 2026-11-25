@@ -25,9 +25,9 @@ func _ready() -> void:
 	if is_multiplayer_authority() and get_window().has_focus():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #hide mouse
 	
-	# Inventory hotbar
+	# Draw HUD
 	if is_multiplayer_authority():
-		Game.hud.hotbar.watch(inventory)
+		Game.hud.watch(self)
 
 
 #############################

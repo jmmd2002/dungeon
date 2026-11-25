@@ -19,3 +19,18 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 8
 script = ExtResource("1_ne75i")
+
+[node name="Crosshair" type="ColorRect" parent="." unique_id=1241827575]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.5372549)
